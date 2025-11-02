@@ -100,21 +100,9 @@ export const deleteProject = asyncHandler(
       res.status(404);
       throw new Error('Project not found');
     }
-
-    // 1. Get the path of the image to delete
-    const imagePath = project.imageUrl;
-
-    await project.deleteOne();
-
-    // 2. Delete the image file from the server
-    if (imagePath) {
-      const filePath = path.join(process.cwd(), imagePath);
-      if (fs.existsSync(filePath)) {
-        fs.unlink(filePath, (err) => {
-          if (err) console.error('Error deleting image:', err);
-        });
-      }
-    }
+    project.isDeleted = true;
+    await project.save();
+  
 
     res.status(200).json({ id: project._id, message: 'Project removed' });
   }
