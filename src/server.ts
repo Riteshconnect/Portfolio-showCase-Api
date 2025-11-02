@@ -1,6 +1,7 @@
 import { httpServer, syncMySQL } from './app'; // 1. Import the server and sync function
 
 const PORT: string | number = process.env.PORT || 5002;
+const HOST = '0.0.0.0'; // <-- ADD THIS LINE
 
 // --- START SERVER & SYNC DB ---
 httpServer.listen(PORT, async () => { // 2. Use httpServer
