@@ -1,10 +1,11 @@
-import { httpServer, syncMySQL } from './app'; // 1. Import the server and sync function
+import { httpServer, syncMySQL } from './app';
 
-const PORT: string | number = process.env.PORT || 5002;
-const HOST = '0.0.0.0'; // <-- ADD THIS LINE
+// Render provides PORT as a string. We MUST parse it to a number.
+const PORT: number = parseInt(process.env.PORT || '5002', 10);
+const HOST = '0.0.0.0';
 
 // --- START SERVER & SYNC DB ---
-httpServer.listen(PORT, async () => { // 2. Use httpServer
-  console.log(`[server]: Server is running at http://localhost:${PORT}`);
-  await syncMySQL(); // 3. Call the sync function
+httpServer.listen(PORT, HOST, async () => {
+  console.log(`[server]: Server is running on http://${HOST}:${PORT}`);
+  await syncMySQL();
 });
