@@ -10,7 +10,7 @@ const sequelize = new Sequelize(
   process.env.MYSQL_PASSWORD as string,
   {
     host: process.env.MYSQL_HOST as string,
-    dialect: 'mysql', // We are using MySQL
+    dialect: 'postgres', // We are using MySQL
     logging: false, // Set to console.log to see raw SQL queries
   }
 );
