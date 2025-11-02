@@ -31,11 +31,11 @@ if (!process.env.JWT_SECRET) {
 }
 
 // --- CONNECT TO DATABASES & SERVICES ---
-// if (process.env.NODE_ENV !== 'test') {
-//   connectDB();
-//   connectMySQL();
-//   verifyEmailConnection();
-// }
+if (process.env.NODE_ENV !== 'test') {
+  connectDB();
+  connectMySQL();
+  // verifyEmailConnection();
+}
 
 // --- APP & SERVER SETUP ---
 const app: Express = express();
